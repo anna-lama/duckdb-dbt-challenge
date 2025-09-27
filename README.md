@@ -28,7 +28,7 @@ Your goal is to build a **DBT project**:
 We will use the **New York City Taxi Trips Dataset**, which contains trip records of taxis in NYC. This dataset is publicly available and can be downloaded using the following:
 
 ```shell
-$ wget https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2024-01.parquet
+$ wget https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2025-08.parquet  
 ```
 
 **Key Columns**:
@@ -121,24 +121,24 @@ Here are examples of expected output tables:
 $ uv venv
 $ source .venv/bin/activate
 $ uv sync
-$ wget https://github.com/duckdb/duckdb/releases/download/v1.1.3/duckdb_cli-linux-amd64.zip && unzip duckdb_cli-linux-amd64.zip && mv duckdb .venv/bin/
+$ wget https://github.com/duckdb/duckdb/releases/download/v1.4.0/duckdb_cli-linux-amd64.zip && unzip duckdb_cli-linux-amd64.zip && mv duckdb .venv/bin/
 $ uv run dbt deps 
-$ wget https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2024-01.parquet -P data/raw
+$ wget  https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2025-08.parquet -P data/raw
 $ uv run dbt run
-09:35:38  Running with dbt=1.8.8
-09:35:38  Registered adapter: duckdb=1.9.0
-09:35:38  Found 1 model, 532 macros
-09:35:38
-09:35:39  Concurrency: 1 threads (target='dev')
-09:35:39
-09:35:39  1 of 1 START sql table model main.staging_yellow_tripdata ...................... [RUN]
-09:35:39  1 of 1 OK created sql table model main.staging_yellow_tripdata ................. [OK in 0.69s]
-09:35:39
-09:35:39  Finished running 1 table model in 0 hours 0 minutes and 0.93 seconds (0.93s).
-09:35:39
-09:35:39  Completed successfully
-09:35:39
-09:35:39  Done. PASS=1 WARN=0 ERROR=0 SKIP=0 TOTAL=1
+13:38:13  Running with dbt=1.10.13
+13:38:13  Registered adapter: duckdb=1.9.6
+13:38:13  Found 1 model, 547 macros
+13:38:13  
+13:38:13  Concurrency: 1 threads (target='dev')
+13:38:13  
+13:38:13  1 of 1 START sql table model main.staging_yellow_tripdata ...................... [RUN]
+13:38:14  1 of 1 OK created sql table model main.staging_yellow_tripdata ................. [OK in 0.74s]
+13:38:14  
+13:38:14  Finished running 1 table model in 0 hours 0 minutes and 0.96 seconds (0.96s).
+13:38:14  
+13:38:14  Completed successfully
+13:38:14  
+13:38:14  Done. PASS=1 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=1
 
 $ uv run duckdb data/db/yellow_tripdata.duckdb "select  * from staging_yellow_tripdata limit 10"
 ---
