@@ -13,3 +13,6 @@ dbt_packages/
 
 # Virtual environments
 .venv
+
+.DS_Store
+duckdb_cli-osx-universal.zip

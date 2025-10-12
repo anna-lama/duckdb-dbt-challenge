@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: raw
+    description: Raw NYC Yellow Taxi data
+    database: yellow_tripdata
+    schema: main
+    
+    tables:
+      - name: staging_yellow_tripdata
+        description: Yellow taxi trip records for August 2025
