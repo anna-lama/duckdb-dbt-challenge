@@ -37,7 +37,10 @@ cleaned AS (
         extra,
         mta_tax,
         improvement_surcharge,
-        congestion_surcharge
+        congestion_surcharge,
+        airport_fee,
+        cbd_congestion_fee,
+        
         
     FROM source
     
@@ -47,8 +50,9 @@ cleaned AS (
       AND fare_amount > 0
       AND passenger_count > 0
       AND passenger_count <= 6
-      AND {{ calculate_trip_duration('tpep_pickup_datetime', 'tpep_dropoff_datetime') }} > 0
-      AND {{ calculate_trip_duration('tpep_pickup_datetime', 'tpep_dropoff_datetime') }} < 720  
+      AND dropoff_datetime > pickup_datetime
+      AND trip_duration_minutes BETWEEN 1 AND 720
+ 
 )
 
 SELECT * FROM cleaned
