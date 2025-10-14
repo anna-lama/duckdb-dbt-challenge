@@ -1,0 +1,35 @@
+version: 2
+
+models:
+  - name: best_pickup_location_v1
+    description: Rank the first five pickup location with more total_trips and the first five with more total_revenue.
+
+    columns:
+      - name: pulocationid
+        tests:
+          - not_null
+
+      - name: total_trips
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: "> 0"
+
+      - name: total_revenue
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+
+      - name: ranking_type
+        tests:
+          - not_null
+          - accepted_values:
+            ['by_revenue', 'by_trips']
+
+      - name: rank
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: "BETWEEN 1 AND 5"
+
