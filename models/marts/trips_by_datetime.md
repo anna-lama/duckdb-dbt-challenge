@@ -12,14 +12,14 @@ Time slots used:
 `models/marts/trips_by_datetime.sql`
 
 ## Logic
-- Uses `pickup_datetime` from the staging model `stg_yellow_tripdata`.
-- Filters out trips with NULL pickup timestamps.
+- I used pickup_datetime, which I defined in the staging model, which is definitely a TIMESTAMP. 
+- I filtered the null columns even though they did not appear in the staging model tests.
 - Aggregates:
-  - `total_trips`: count of trips per time slot.
+  - `total_trips`: count of trips per timeof_day.
   - `total_revenue`: sum of `total_amount` per time slot.
 
-### Optional Macro
-- `classify_time_of_day(pickup_datetime)` is used to standardize time slot classification.
+### Macro
+- `classify_time_of_day(pickup_datetime)` is used to caluculate time slot classification.
 
 ## DBT Tests
 - `time_of_day` is not null and belongs to the accepted values (`Morning`, `Afternoon`, `Evening`, `Night`).
@@ -29,4 +29,5 @@ Time slots used:
 ## How to Run
 Compile and execute this mart:
 ```bash
-dbt run --select mrt_trips_by_time_of_day
+dbt run --select trips_by_datetime
+dbt test --select trips_by_datetime
