@@ -25,7 +25,7 @@ models:
         tests:
           - not_null
           - accepted_values:
-            ['by_revenue', 'by_trips']
+              values: ['by_revenue', 'by_trips']
 
       - name: rank
         tests:

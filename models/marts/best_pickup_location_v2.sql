@@ -16,7 +16,9 @@ ranked_zones AS (
 SELECT 
     pulocationid,
     total_trips,
-    ROUND(total_revenue, 2),
+    ROUND(total_revenue, 2) as total_revenue,
+    trip_rank,
+    revenue_rank,
     (trip_rank + revenue_rank) as total_score
 FROM ranked_zones
 ORDER BY total_score

@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: best_pickup_location_v1
+  - name: best_pickup_location_v2
     description: Rank the first five pickup location with more total_trips and the first five with more total_revenue.
 
     columns:
@@ -25,7 +25,7 @@ models:
         tests:
           - not_null
           - accepted_values:
-            ['by_revenue', 'by_trips']
+              values: ['by_revenue', 'by_trips']
 
       - name: rank
         tests:
