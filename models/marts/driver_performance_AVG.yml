@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: driver_performance_AVG
+    description: Arithmetic average rate for vendor id.
+
+    columns:
+      - name: vendor_id
+        tests:
+          - not_null
+          - accepted_values:
+              values: [1, 2, 6, 7]
+
+      - name: avg_tip_percentage
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression:  "BETWEEN 1 AND 100"
