@@ -26,7 +26,7 @@ cleaned AS (
         -- Requested flag for distance categorization
         CASE
             WHEN trip_distance <= 2 THEN 'short'
-            WHEN trip_distance <= 10 THEN 'medium'
+            WHEN trip_distance <= 5 THEN 'medium'
             ELSE 'long'
         END as distance_category,
         

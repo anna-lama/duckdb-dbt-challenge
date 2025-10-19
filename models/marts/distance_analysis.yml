@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: distance_analysis
+    description: Analysis of trip duration and revenue aggregated by distance category, classified in the staging model.
+
+    columns:
+      - name: distance_category
+        description: Distance classification
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['short', 'medium', 'long']
+
+      - name: average_trip_duration
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: "> 0"
+
+      - name: total_revenue
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
