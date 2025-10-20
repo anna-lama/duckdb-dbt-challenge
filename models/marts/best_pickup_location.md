@@ -6,11 +6,11 @@ The second mart identifies the top 5 pickup zones (PULocationID) with:
 - The highest total revenue.
 
 ## Model Location
-`models/marts/best_pickup_location_v1.sql`
-`models/marts/best_pickup_location_v2.sql`
+- `models/marts/best_pickup_location_v1.sql`
+- `models/marts/best_pickup_location_v2.sql`
 
 ## Logic
-- I developed the second mart in two ways:
+- The second mart is developed in two ways:
   - The first produces two separate rankings for pickup locations with the highest number of trips and those with the highest earnings.
   - The second creates a ranking based on the sum of the scores obtained from the two categories.
 - Both versions use the staging model `stg_yellow_tripdata` as the source of cleaned and standardized data.

@@ -9,13 +9,13 @@ Time slots used:
 - **Night**: 22:00 - 04:59
 
 ## Model Location
-`models/marts/trips_by_datetime.sql`
+- `models/marts/trips_by_datetime.sql`
 
 ## Logic
-- I used pickup_datetime, which I defined in the staging model, which is definitely a TIMESTAMP. 
-- I filtered the null columns even though they did not appear in the staging model tests.
+- The pickup_datetime column is used to determine the time slot.
+- Null timestamps are filtered out to ensure accurate aggregations.
 - Aggregates:
-  - `total_trips`: count of trips per timeof_day.
+  - `total_trips`: count of trips per time_of_day.
   - `total_revenue`: sum of `total_amount` per time slot.
 
 ### Macro

@@ -12,8 +12,8 @@ WITH time_classified AS (
 
 SELECT
     time_of_day,
-    COUNT(*)                 AS total_trips,
-    ROUND(SUM(total_amount), 2)        AS total_revenue
+    COUNT(*) AS total_trips,
+    ROUND(SUM(total_amount), 2) AS total_revenue
 FROM time_classified
 GROUP BY time_of_day
 

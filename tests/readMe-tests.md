@@ -42,5 +42,9 @@ WHERE ABS(
 **Purpose:**
 This test verifies the **consistency of payment data**.
 It checks that the sum of all fare components (`fare_amount`, `taxes`, `tolls`, `surcharges`, `fees`) matches the reported `total_amount`, allowing for a small rounding tolerance (`0.01`).
+
+THIS IS A TEST NOT IMPLEMENTED BECAUSE IT FAILS DURING DBT RUN.
+It represents an observation I made regarding the consistency of the total_amount field.
 Rows failing this test indicate **inaccurate or inconsistent total charges**, but I don't know if it's right to exclude these lines.
+I left it here to discuss with the reviewer before deciding how to handle it.
 

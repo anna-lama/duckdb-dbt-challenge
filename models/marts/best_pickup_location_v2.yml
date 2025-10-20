@@ -21,15 +21,21 @@ models:
           - dbt_utils.expression_is_true:
               expression: ">= 0"
 
-      - name: ranking_type
-        tests:
-          - not_null
-          - accepted_values:
-              values: ['by_revenue', 'by_trips']
-
-      - name: rank
+      - name: trip_rank
         tests:
           - not_null
           - dbt_utils.expression_is_true:
-              expression: "BETWEEN 1 AND 5"
+              expression: "BETWEEN 1 AND 10"
+
+      - name: revenue_rank
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: "BETWEEN 1 AND 10"
+
+      - name: total_score
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: "BETWEEN 1 AND 10"
 

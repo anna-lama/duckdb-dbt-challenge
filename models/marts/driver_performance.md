@@ -4,13 +4,13 @@
 Calculate the average tip percentage (tip_amount / total_amount) for each VendorID
 
 ## Model Location
-`models/marts/driver_performance_AVG.sql`
-`models/marts/driver_performance_pond.sql`
+- `models/marts/driver_performance_AVG.sql`
+- `models/marts/driver_performance_pond.sql`
 
 ## Logic
-- Also this mart is developed in two ways:
-  - Calculates the simple average of the tip percentages per trip, giving the same weight to every ride regardless of its total amount.
-  - Computes the ratio between the total tips and the total revenue, assigning higher weight to trips with higher total fares, more robust to outliers.
+- This mart is developed in two ways:
+  - `driver_performance_AVG` calculates the simple arithmetic average of the tip percentages per trip, giving the same weight to every ride regardless of its total amount.
+  - `driver_performance_pond` computes the ratio between the total tips and the total revenue, assigning higher weight to trips with higher total fares, more robust to outliers.
 - By the way in this case, with this dataset the difference between the arithmetic and weighted averages is minimal:
   
   | VendorID | Arithmetic Avg (%) | Weighted Avg (%) |
@@ -18,7 +18,7 @@ Calculate the average tip percentage (tip_amount / total_amount) for each Vendor
   | 2        | 12.04           | 12.35          |
   | 1        | 10.91           | 10.84          |
 
-- This result is also evidentiated in a plot `analyses/driver_performance.png`
+- This result is also evidentiated in a plot `analyses/driver_performance.png` as result of the python script `analyses/driver_performance.py`
 - Both versions use the staging model `stg_yellow_tripdata` as the source of cleaned and standardized data.
 
 ### Macro

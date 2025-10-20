@@ -8,10 +8,10 @@ The distance classification used is:
 - **long**: >5 miles
 
 ## Model Location
-`models/marts/distance_analysis.sql`
+- `models/marts/distance_analysis.sql`
 
 ## Logic
-- I used the data previously defined in the staging model: distance_category and trip_duration_minutes.
+- Uses the data previously defined in the staging model: `distance_category` and `trip_duration_minutes`.
 - Aggregates:
   - `trip_duration_minutes`: calculated as the average trip duration (in minutes) for each distance category
   - `total_revenue`: calculated as the sum of total_amount for all trips in the same distance category.
